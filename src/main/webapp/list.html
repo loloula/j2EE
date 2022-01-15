@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Projet ICol</title>
+ <link href="../static/style.css" th:href="@{/style.css}" rel="stylesheet" />
+</head>
+<body>
+<div style="height:60px">
+<header>
+<div style="width: 20%; display: inline-block;">
+<h1>GuideTouriste</h1></div>
+<div style="width: 70%; display: inline-block;" >
+	<a id="accueil" href="">Accueil</a>
+	<select id="edifice" name= "Choix" onChange=location.href>
+		<option>Edifices</option>
+		<option value= "/"><a href="/" th:href="@{/}">Monument </a> </option>
+		<option value= "/ListMonument">Manoir</option>
+		<option value= "/ListMonument">Eglise</option>
+	</select>
+	
+	
+	<select id="cult" name= "Choix" >
+		<option>Espaces culturels</option>
+		<option value= "/ListMonument">Cinema</option>
+		<option value= "/ListMonument">Theatre</option>
+		<option value= "/ListMonument">Centre culturel</option>
+	</select>
+	
+	<select id="spor" name= "Choix" >
+		<option>Espaces sportifs</option>
+		<option value= "/ListMonument">piscine</option>
+		<option value= "/ListMonument">stade</option>
+		<option value= "/ListMonument">terrain tenis</option>
+	</select>
+	
+	<select id="lieu" name= "Choix" >
+		<option>Lieu</option>
+		<option value= "/ListMonument">commune</option>
+		<option value= "/ListMonument">departement</option>
+	</select>
+</div>
+</header>
+</div>
+<div>
+<main>
+<div style="width: 100%">
+<div style="width: 50%; float:left; display: inline-block;">
+<h1 id="titre2">Ajouter un nouveau Monument</h1>
+<form  action="/monument" method="post">
+<fieldset>
+<legend width="30px">Remplir ce formulaire</legend>
+<label > codem </label>
+<input type="text" name="codeM" required class="form-control"><br>
+</fieldset>
+<fieldset>
+<label>nomM</label>
+<input type="text" name="nomM" class="form-control" required><br>
+</fieldset>
+<fieldset>
+<label >proprietaire</label>
+<input type="text" name="proprietaire" class="form-control" required><br>
+</fieldset>
+<fieldset>
+<label >typeM</label>
+<input type="text" name="typeM" class="form-control" required><br>
+</fieldset>
+<fieldset>
+<label>longitude</label>
+<input type="number" name="longitude" class="form-control" required><br>
+</fieldset>
+<fieldset>
+<label>latitude</label>
+<input type="number" name="latitude" class="form-control" required><br>
+</fieldset>
+<fieldset>
+<label>codeLieu</label>
+<input type="text" name="codeLieu" class="form-control" required><br>
+</fieldset>
+<fieldset>
+<input type="submit" value="Ajouter">
+</fieldset>
+</form>
+</div>
+<div style="width: 50%; display: inline-block;">
+<h1 id="titre2">Recherche Monument</h1>
+<form  action="/recherche" method="post">
+<fieldset>
+<legend width="30px">Rechercher les monuments de la commune</legend>
+<label > ville </label>
+<input type="text" name="ville" required class="form-control"><br>
+</fieldset>
+<fieldset>
+<input type="submit" value="Rechercher">
+</fieldset>
+</form>
+<table style="border: 1px solid black;">
+<thead>
+<tr>
+<td>nomCommune</td>
+<td>NomMonument</td>
+<td>Proriétaire</td>
+<td>TypeMonument</td>
+<td>Longitude</td>
+<td>Latitude</td>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr th:each ="monument : ${monumentschercher}">
+<td th:utext="${monument[0]}"></td>
+<td th:utext="${monument[1]}"></td>
+<td th:utext="${monument[2]}"></td>
+<td th:utext="${monument[3]}"></td>
+<td th:utext="${monument[4]}"></td>
+<td th:utext="${monument[5]}"></td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<h1>Base de donnée des Monuments</h1>
+Notre base de donnée contient <span style="font-weight: bold;" th:utext="${monuments.size}"></span> Monuments. 
+<div>
+<table style="border: 1px solid black;">
+<thead>
+<tr>
+<td>codeMonument</td>
+<td>NomMonument</td>
+<td>Proriétaire</td>
+<td>TypeMonument</td>
+<td>Longitude</td>
+<td>Latitude</td>
+<td>CodeLieu</td>
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr th:each ="monument : ${monuments}">
+<td th:utext="${monument.codeM}"></td>
+<td th:utext="${monument.nomM}"></td>
+<td th:utext="${monument.proprietaire}"></td>
+<td th:utext="${monument.typeM}"></td>
+<td th:utext="${monument.longitude}"></td>
+<td th:utext="${monument.latitude}"></td>
+<td th:utext="${monument.codeLieu}"></td>
+
+</tr>
+</tbody>
+</table>
+</div>
+</main>
+</div>
+<div>
+<footer> </footer>
+</div>
+</body>
+</html>

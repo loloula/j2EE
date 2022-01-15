@@ -1,0 +1,50 @@
+h1 {color:#008B8B;}
+  input{
+  color:#20B2AA;
+  }
+  fieldset{
+  width:80px;
+  }
+  
+  header{
+   width: 100%; 
+   height:60px; 
+   background:black;
+   position: fixed;
+  }
+ 
+  a{
+  color:white;}
+  #accueil{
+  margin-left:20%;
+  }
+  #edifice{
+   margin-left:5%;
+  }
+  #cult{
+  margin-left:5%;
+  }
+  #spor{
+  margin-left:5%;
+  }
+  #lieu{
+  margin-left:5%;
+  }
+  select {
+	margin: 0;
+	padding-left: 15px;
+	color: #555555;
+	cursor: pointer;
+	}
+.select {
+	position: relative;
+	width: 100%;
+	height: 45px;
+	border-radius: 5px;
+	border: 1px solid #CED4DA;
+	}
+	
+#fafafa input {
+ border:1px solid black;
+ background-color:#A6BEDE;
+ }
